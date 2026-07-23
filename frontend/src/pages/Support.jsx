@@ -8,7 +8,7 @@ export default function Support() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch('http://localhost:5000/api/feedback', {
+    await fetch('https://finforge-backend-dvlz.onrender.com/api/feedback', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userId: user.id, userName: user.name, message })

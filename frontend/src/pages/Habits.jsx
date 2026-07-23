@@ -11,7 +11,7 @@ export default function Habits() {
   const user = JSON.parse(localStorage.getItem('user'));
 
   const fetchHabits = async () => {
-    const res = await fetch(`http://localhost:5000/api/habits/${user.id}`);
+    const res = await fetch(`https://finforge-backend-dvlz.onrender.com/api/habits/${user.id}`);
     const data = await res.json();
     setHabits(data);
     sessionStorage.setItem('cached_habits', JSON.stringify(data)); // Update Cache
@@ -21,7 +21,7 @@ export default function Habits() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch('http://localhost:5000/api/habits', {
+    await fetch('https://finforge-backend-dvlz.onrender.com/api/habits', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title, frequency, userId: user.id })
@@ -32,13 +32,13 @@ export default function Habits() {
   };
 
   const handleComplete = async (habitId) => {
-    await fetch(`http://localhost:5000/api/habits/${habitId}/complete`, { method: 'PUT' });
+    await fetch(`https://finforge-backend-dvlz.onrender.com/api/habits/${habitId}/complete`, { method: 'PUT' });
     fetchHabits(); 
   };
 
   const handleDelete = async (habitId) => {
     if (!window.confirm("Delete this habit?")) return;
-    await fetch(`http://localhost:5000/api/habits/${habitId}`, { method: 'DELETE' });
+    await fetch(`https://finforge-backend-dvlz.onrender.com/api/habits/${habitId}`, { method: 'DELETE' });
     fetchHabits(); 
   };
 

@@ -9,7 +9,7 @@ export default function Admin() {
   const [stats, setStats] = useState(null);
 
   const fetchStats = () => {
-    fetch('http://localhost:5000/api/admin/stats')
+    fetch('https://finforge-backend-dvlz.onrender.com/api/admin/stats')
       .then(res => res.json())
       .then(data => setStats(data))
       .catch(err => console.error(err));
@@ -26,7 +26,7 @@ export default function Admin() {
     setError('');
     
     try {
-      const res = await fetch('http://localhost:5000/api/admin/login', {
+      const res = await fetch('https://finforge-backend-dvlz.onrender.com/api/admin/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -49,12 +49,12 @@ export default function Admin() {
 
   const handleDeleteUser = async (userId) => {
     if (!window.confirm("Are you sure? This permanently deletes the user and ALL their data!")) return;
-    await fetch(`http://localhost:5000/api/admin/users/${userId}`, { method: 'DELETE' });
+    await fetch(`https://finforge-backend-dvlz.onrender.com/api/admin/users/${userId}`, { method: 'DELETE' });
     fetchStats();
   };
 
   const handleDeleteFeedback = async (feedbackId) => {
-    await fetch(`http://localhost:5000/api/feedback/${feedbackId}`, { method: 'DELETE' });
+    await fetch(`https://finforge-backend-dvlz.onrender.com/api/feedback/${feedbackId}`, { method: 'DELETE' });
     fetchStats();
   };
 

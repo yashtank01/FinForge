@@ -41,7 +41,7 @@ export default function Auth() {
 
     try {
       // Send the request to Node.js backend
-      const response = await fetch(`http://localhost:5000${endpoint}`, {
+      const response = await fetch(`https://finforge-backend-dvlz.onrender.com${endpoint}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

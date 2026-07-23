@@ -10,7 +10,7 @@ export default function Analytics() {
 
   useEffect(() => {
     const fetchTransactions = async () => {
-      const res = await fetch(`http://localhost:5000/api/transactions/${user.id}`);
+      const res = await fetch(`https://finforge-backend-dvlz.onrender.com/api/transactions/${user.id}`);
       const data = await res.json();
       const sortedData = data.sort((a, b) => new Date(a.date) - new Date(b.date));
       

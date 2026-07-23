@@ -24,7 +24,7 @@ export default function Dashboard() {
     const fetchDashboardData = async () => {
       try {
         // Fetch Transactions
-        const transRes = await fetch(`http://localhost:5000/api/transactions/${user.id}`);
+        const transRes = await fetch(`https://finforge-backend-dvlz.onrender.com/api/transactions/${user.id}`);
         const transData = await transRes.json();
         const sortedTrans = transData.sort((a, b) => new Date(b.date) - new Date(a.date));
         
@@ -33,7 +33,7 @@ export default function Dashboard() {
         sessionStorage.setItem('cached_trans', JSON.stringify(sortedTrans));
 
         // Fetch Habits
-        const habRes = await fetch(`http://localhost:5000/api/habits/${user.id}`);
+        const habRes = await fetch(`https://finforge-backend-dvlz.onrender.com/api/habits/${user.id}`);
         const habData = await habRes.json();
         
         // Update state AND update the cache for next time

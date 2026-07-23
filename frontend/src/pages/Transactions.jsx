@@ -10,7 +10,7 @@ export default function Transactions() {
   const user = JSON.parse(localStorage.getItem('user'));
 
   const fetchTransactions = async () => {
-    const res = await fetch(`http://localhost:5000/api/transactions/${user.id}`);
+    const res = await fetch(`https://finforge-backend-dvlz.onrender.com/api/transactions/${user.id}`);
     const data = await res.json();
     const sortedTrans = data.sort((a, b) => new Date(b.date) - new Date(a.date));
     
@@ -22,7 +22,7 @@ export default function Transactions() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch('http://localhost:5000/api/transactions', {
+    await fetch('https://finforge-backend-dvlz.onrender.com/api/transactions', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ...form, userId: user.id })

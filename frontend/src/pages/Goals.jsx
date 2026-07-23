@@ -11,7 +11,7 @@ export default function Goals() {
   const user = JSON.parse(localStorage.getItem('user'));
 
   const fetchGoals = async () => {
-    const res = await fetch(`http://localhost:5000/api/goals/${user.id}`);
+    const res = await fetch(`https://finforge-backend-dvlz.onrender.com/api/goals/${user.id}`);
     const data = await res.json();
     setGoals(data);
     sessionStorage.setItem('cached_goals', JSON.stringify(data)); // Update Cache
@@ -21,7 +21,7 @@ export default function Goals() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch('http://localhost:5000/api/goals', {
+    await fetch('https://finforge-backend-dvlz.onrender.com/api/goals', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ...form, userId: user.id })
@@ -31,7 +31,7 @@ export default function Goals() {
   };
 
   const handleAddFunds = async (goalId, amount) => {
-    await fetch(`http://localhost:5000/api/goals/${goalId}/add`, {
+    await fetch(`https://finforge-backend-dvlz.onrender.com/api/goals/${goalId}/add`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ amount })
@@ -41,7 +41,7 @@ export default function Goals() {
 
   const handleDelete = async (goalId) => {
     if (!window.confirm("Delete this goal?")) return;
-    await fetch(`http://localhost:5000/api/goals/${goalId}`, { method: 'DELETE' });
+    await fetch(`https://finforge-backend-dvlz.onrender.com/api/goals/${goalId}`, { method: 'DELETE' });
     fetchGoals(); 
   };
 
